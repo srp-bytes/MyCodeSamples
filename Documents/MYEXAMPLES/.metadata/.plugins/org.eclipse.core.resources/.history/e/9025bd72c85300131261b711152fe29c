@@ -1,0 +1,170 @@
+import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.custom.ScrolledComposite;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.FormLayout;
+import org.eclipse.swt.layout.FormData;
+import org.eclipse.swt.layout.FormAttachment;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.widgets.Group;
+
+
+public class DynamicDialog extends Dialog {
+	private Text text;
+	private Text text_1;
+	Composite composite_2;
+	Composite composite;
+	/**
+	 * Create the dialog.
+	 * @param parentShell
+	 */
+	public DynamicDialog(Shell parentShell) {
+		super(parentShell);
+	}
+
+	/**
+	 * Create contents of the dialog.
+	 * @param parent
+	 */
+	@Override
+	protected Control createDialogArea(Composite parent) {
+		parent.setSize(new Point(700, 500));
+		Composite container = (Composite) super.createDialogArea(parent);
+		container.setLayout(new FillLayout(SWT.HORIZONTAL));
+		
+		ScrolledComposite scrolledComposite = new ScrolledComposite(container, SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
+		scrolledComposite.setExpandHorizontal(true);
+		scrolledComposite.setExpandVertical(true);
+		
+	    composite = new Composite(scrolledComposite, SWT.NONE);
+		composite.setLayout(new GridLayout(1, false));
+		
+		Group grpMpagesserver = new Group(composite, SWT.NONE);
+		grpMpagesserver.setLayout(new GridLayout(1, false));
+		GridData gd_grpMpagesserver = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_grpMpagesserver.heightHint = 119;
+		gd_grpMpagesserver.widthHint = 595;
+		grpMpagesserver.setLayoutData(gd_grpMpagesserver);
+		grpMpagesserver.setText("mPagesServer");
+		
+		Composite composite_1 = new Composite(grpMpagesserver, SWT.NONE);
+		composite_1.setLayout(new GridLayout(3, false));
+		GridData gd_composite_1 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_composite_1.heightHint = 46;
+		gd_composite_1.widthHint = 587;
+		composite_1.setLayoutData(gd_composite_1);
+		
+		Label lblDefault = new Label(composite_1, SWT.NONE);
+		lblDefault.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		lblDefault.setText("Default:");
+		
+		Combo combo = new Combo(composite_1, SWT.NONE);
+		combo.setSize(new Point(15, 10));
+		GridData gd_combo = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gd_combo.widthHint = 128;
+		combo.setLayoutData(gd_combo);
+		
+		Button btnAdd = new Button(composite_1, SWT.NONE);
+		btnAdd.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				Label label = new Label(composite_2, SWT.NONE);
+				label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+				label.setText("1");
+				
+				text = new Text(composite_2, SWT.BORDER);
+				GridData gd_text = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+				gd_text.widthHint = 197;
+				text.setLayoutData(gd_text);
+				
+				text_1 = new Text(composite_2, SWT.BORDER);
+				GridData gd_text_1 = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+				gd_text_1.widthHint = 165;
+				text_1.setLayoutData(gd_text_1);
+				
+				Button btnDelete = new Button(composite_2, SWT.NONE);
+				btnDelete.setText("Delete");
+			    composite_2.setSize(SWT.DEFAULT,SWT.DEFAULT);
+			    composite_2.layout();
+			    composite.setSize(SWT.DEFAULT,SWT.DEFAULT);
+			    composite.layout();
+			
+			}
+		});
+		btnAdd.setText("Add");
+		
+	    composite_2 = new Composite(grpMpagesserver, SWT.NONE);
+		composite_2.setLayout(new GridLayout(4, false));
+		GridData gd_composite_2 = new GridData(SWT.LEFT, SWT.CENTER, false, false, 1, 1);
+		gd_composite_2.heightHint = 60;
+		gd_composite_2.widthHint = 587;
+		composite_2.setLayoutData(gd_composite_2);
+		
+		Label label = new Label(composite_2, SWT.NONE);
+		label.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
+		label.setText("1");
+		
+		text = new Text(composite_2, SWT.BORDER);
+		GridData gd_text = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gd_text.widthHint = 197;
+		text.setLayoutData(gd_text);
+		
+		text_1 = new Text(composite_2, SWT.BORDER);
+		GridData gd_text_1 = new GridData(SWT.LEFT, SWT.CENTER, true, false, 1, 1);
+		gd_text_1.widthHint = 165;
+		text_1.setLayoutData(gd_text_1);
+		
+		Button btnDelete = new Button(composite_2, SWT.NONE);
+		btnDelete.setText("Delete");
+		scrolledComposite.setContent(composite);
+		scrolledComposite.setMinSize(composite.computeSize(SWT.DEFAULT, SWT.DEFAULT));
+
+		return container;
+	}
+
+	/**
+	 * Create contents of the button bar.
+	 * @param parent
+	 */
+	@Override
+	protected void createButtonsForButtonBar(Composite parent) {
+		createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL,
+				true);
+		createButton(parent, IDialogConstants.CANCEL_ID,
+				IDialogConstants.CANCEL_LABEL, false);
+	}
+
+	/**
+	 * Return the initial size of the dialog.
+	 */
+	@Override
+	protected Point getInitialSize() {
+		return new Point(614, 412);
+	}
+	
+	public static void main(String[] args){
+		
+		Shell shell =  new Shell(new Display());
+		//shell.setLayout(new FillLayout());
+		DynamicDialog dd = new DynamicDialog(shell);
+		dd.open();
+		
+	}
+
+
+
+
+}
