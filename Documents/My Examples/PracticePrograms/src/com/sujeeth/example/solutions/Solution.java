@@ -122,13 +122,17 @@ public class Solution {
 			int[] nums) {
 		if (tempList.size() == nums.length) {
 			list.add(new ArrayList<>(tempList));
+			System.out.println("list.add(new ArrayList<>(tempList))");
 		} else {
 			for (int i = 0; i < nums.length; i++) {
 				if (tempList.contains(nums[i]))
 					continue; // element already exists, skip
+				System.out.println("i->"+i);
 				tempList.add(nums[i]);
+				System.out.println("backtrack(list, tempList, nums)");
 				backtrack(list, tempList, nums);
 				tempList.remove(tempList.size() - 1);
+				System.out.println("tempList.remove(tempList.size() - 1)");
 			}
 		}
 	}
@@ -903,7 +907,7 @@ public class Solution {
         
     return s.substring(left+1,right);
   }
-
+    //Bad approach
 	private String longestPalindromeBruteForce(String s) {
 		String longestPal = "";
 		// optimization statements
@@ -1103,7 +1107,40 @@ public class Solution {
 		//sol.searchMatrix(new int[][]{{1,3,5,7}},7);
 		//System.out.println(sol.permute(new int[]{1,2,3}));
 		//sol.setZeroes(new int[][]{{1}});
+		//SolutionII sol2 = new SolutionII();
+		//sol2.reverseString("hello");
+		//sol2.reverseStr("abcdefghij", 2);
 		SolutionII sol2 = new SolutionII();
-		sol2.reverseString("hello");
+		/*ListNode n = sol.new ListNode(3);
+		ListNode n2 = sol.new ListNode(4);
+		n.next = n2;
+		ListNode n3 = sol.new ListNode(7);
+		n2.next = n3;
+		ListNode n4 = sol.new ListNode(8);
+		n3.next = n4;
+		ListNode n5 = sol.new ListNode(1);
+		n4.next = n5;
+		//sol2.removeNode(n);
+		ListNode partitionList = sol2.partitionList(n, 4);
+		while(partitionList!=null){
+		System.out.println(partitionList.val);
+		partitionList = partitionList.next;
+		}*/
+		
+		/*int[] arr = new int[]{-1,0,1,2,3,5};
+		int magicIdx = sol2.findMagicIdxDups(arr, 0, arr.length-1);
+		String val = magicIdx>=0?"found":"not found";
+		System.out.println("Magic_Idx:"+val +":"+magicIdx);*/
+		ListNode n0 = sol.new ListNode(1);
+		ListNode n2 = sol.new ListNode(2);
+		n0.next = n2;
+		ListNode n3 = sol.new ListNode(2);
+		n2.next = n3;
+		ListNode n4 = sol.new ListNode(3);
+		n3.next = n4;
+		ListNode n5 = sol.new ListNode(1);
+		n4.next = n5;
+		n5.next = null;
+		System.out.println("list is plaindrome "+sol2.isPalindrome(n0, n0));
 	}
 }
