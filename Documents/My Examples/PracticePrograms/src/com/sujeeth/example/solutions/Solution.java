@@ -1141,6 +1141,6 @@ public class Solution {
 		ListNode n5 = sol.new ListNode(1);
 		n4.next = n5;
 		n5.next = null;
-		System.out.println("list is plaindrome "+sol2.isPalindrome(n0, n0));
+		System.out.println("list is plaindrome "+sol2.isPalindrome(n0));
 	}
 }
