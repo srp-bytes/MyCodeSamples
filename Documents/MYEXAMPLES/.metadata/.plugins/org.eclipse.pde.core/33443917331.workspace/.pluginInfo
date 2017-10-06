@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<map>
-	<bundle bundleID="950" class="listviewerexample.Activator" localization="OSGI-INF/l10n/bundle" name="ListViewerExample" project="ListViewerExample"/>
-	<bundle bundleID="951" class="dynamic_dialog.Activator" localization="OSGI-INF/l10n/bundle" name="Dynamic_Dialog" project="Dynamic Dialog"/>
-	<bundle bundleID="952" class="swt_examples.Activator" localization="OSGI-INF/l10n/bundle" name="SWT_EXAMPLES" project="SWT EXAMPLES"/>
-	<bundle bundleID="953" class="dynamic_trial.Activator" localization="OSGI-INF/l10n/bundle" name="Dynamic_Trial" project="Dynamic Trial"/>
-</map>
